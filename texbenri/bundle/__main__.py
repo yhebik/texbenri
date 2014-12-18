@@ -84,7 +84,7 @@ def getargs():
     """Parse command line argument and return the result as a dict object."""
     import argparse
     parser = argparse.ArgumentParser(
-        prog='texbundle1d',
+        prog='texbenri.bundle',
         description='Reform TeX file and figures to be in a single foldfer',
         )
     parser.add_argument(
