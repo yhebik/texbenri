@@ -4,6 +4,7 @@ import re
 import unittest
 from texbenri.bibsub.__main__ import *
 
+
 class Test(unittest.TestCase):
     REFFILE = 'testdict.dat'
     TEXFILE = 'testdict.tex'
@@ -23,7 +24,7 @@ class Test(unittest.TestCase):
             os.remove(i)
 
     def testFunc_load_refdict(self, ):
-        refdict = load_refdict([self.REFFILE,])
+        refdict = load_refdict([self.REFFILE, ])
         self.assertTrue(self.FULL in refdict.keys())
         self.assertTrue(self.AB in refdict.values())
 
@@ -32,6 +33,3 @@ class Test(unittest.TestCase):
         s = bibsub(self.TEXFILE, refdict, True)
         self.assertFalse(re.search(self.FULL, s))
         self.assertTrue(re.search(self.AB, s))
-
-
-
