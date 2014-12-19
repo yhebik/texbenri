@@ -19,7 +19,8 @@ def load_refdict(dictpaths):
             if not re.match('^\s*$', l):
                 key, value = re.split('\s?=\s?', l)
                 key = re.sub('^\s+', '', key)
-                refdict[key] = value
+                if key != value:
+                    refdict[key] = value
     return refdict
 
 

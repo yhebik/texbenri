@@ -27,8 +27,9 @@ def get_graphics_list(fname):
     with open(fname) as f:
         s = f.read()
     rawls = re.findall('.*includegraphics.*', s)
-    figls = [re.sub('(^.*{)|}\s*$', '', i) for i in rawls]
-    ls = [(i, re.sub('(^.*{)|}\s*$', '', i)) for i in rawls]
+    # figls = [re.sub('(^.*{)|}\s*$', '', i) for i in rawls]
+    figls = [re.sub('(^.*?{)|}\s*$', '', i) for i in rawls]
+    ls = [(i, re.sub('(^.*?{)|}\s*$', '', i)) for i in rawls]
     ls = tuple(zip(rawls, figls))
     return ls
 
@@ -54,7 +55,7 @@ def copy_figs(fname, fmt, prefix):
     graphicspath = parse_graphicspath(fname)
     ls = get_graphics_list(fname)
     for i, l in enumerate(ls):
-        target = l[1]
+        target = re.sub('{|}', '', l[1])
         figname = fmt.format(i+1, os.path.splitext(target)[1])
         for gpath in graphicspath:
             if os.path.isfile(gpath+target):
