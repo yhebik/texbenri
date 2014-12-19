@@ -24,7 +24,7 @@ def load_refdict(dictpaths):
 
 
 def bibsub(fname, refdict, silent):
-    """Substitute full journal names in BibTeX file into their abbrebiations."""
+    """Substitute full journal names in BibTeX file into their abbreb.."""
     fmtbase = '\{{\s*(the )?{0}\s*\}}'
     with open(fname) as f:
         substituted = f.read()
@@ -34,16 +34,17 @@ def bibsub(fname, refdict, silent):
             if not silent:
                 print('{0} -> {1}'.format(key, value))
             substituted = re.sub(
-                    expr, '{{{0}}}'.format(value), substituted, flags=re.I)
+                expr, '{{{0}}}'.format(value), substituted, flags=re.I)
     return substituted
 
 
 def getargs():
     """Parse command line argument and return the result as a dict object."""
     import argparse
+    descrep = 'Substitute full journal names in bib file into their abbreb..'
     parser = argparse.ArgumentParser(
         prog='texbenri.bibsub',
-        description='Substitute full journal names in bib file into their abbrebiations.',
+        description=descrep,
         )
     parser.add_argument(
         'fname',
@@ -67,7 +68,7 @@ def getargs():
         default=False,
         action='store_true',
         )
-    keys= vars(parser.parse_args())
+    keys = vars(parser.parse_args())
     return keys
 
 
@@ -84,7 +85,7 @@ def main():
         with open(keys['fname']+'.tmp', 'w') as f:
             f.write(substituted)
         os.rename(keys['fname']+'.tmp', keys['fname'])
-    
+
 
 if __name__ == '__main__':
     main()
