@@ -1,9 +1,19 @@
-texbenri
+TeX benri (便利 --- useful) command collection as a Python3 package
 ========
 
-## Python 3 module for TeX
+## INSTALL
+```sh
+$ sudo python3 setup.py install
+```
 
+## USAGE
+Because this is a python package, you need to put `python3 -m texbenri`
+as a prefix. For example,
+```sh
+$ python3 -m texbenri.bundle ...
+```
 
+## COMMANDS
 ### `bundle`
 ```
 usage: texbenri.bundle [-h] [-d PREFIX] [-f FMT] [-s] fname
