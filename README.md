@@ -2,14 +2,16 @@ texbenri
 ========
 TeX benri (便利 --- useful) command collection as a Python3 package.
 
-## INSTALL
-```sh
-$ sudo python3 setup.py install
-```
-
 ## TEST
 ```sh
+$ cd {texbenri's project root}
 $ python3 -m unittest
+```
+
+## INSTALL
+```sh
+$ cd {texbenri's project root}
+$ sudo python3 setup.py install
 ```
 
 ## USAGE
@@ -51,6 +53,7 @@ optional arguments:
                         bst file name (acsrev|aip) (default: acsrev)
 ```
 ### `bibsub`
+```
 usage: texbenri.bibsub [-h] [-d DICT] [-n] [-s] fname
 
 Substitute full journal names in bib file into their abbrebiations.
@@ -63,3 +66,4 @@ optional arguments:
   -d DICT, --dict DICT  "," separated extra list of dict files
   -n, --dry-run         dry-run mode: do nothing actually
   -s, --silent          invoke silent mode
+```
