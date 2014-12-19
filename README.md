@@ -4,13 +4,13 @@ TeX benri (便利 --- useful) command collection as a Python3 package.
 
 ## TEST
 ```sh
-$ cd {texbenri's project root}
+$ cd {texbenri project root}
 $ python3 -m unittest
 ```
 
 ## INSTALL
 ```sh
-$ cd {texbenri's project root}
+$ cd {texbenri project root}
 $ sudo python3 setup.py install
 ```
 
