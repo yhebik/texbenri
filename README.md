@@ -1,5 +1,6 @@
-TeX benri (便利 --- useful) command collection as a Python3 package
+texbenri
 ========
+TeX benri (便利 --- useful) command collection as a Python3 package.
 
 ## INSTALL
 ```sh
