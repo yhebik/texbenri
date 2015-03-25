@@ -24,6 +24,18 @@ class ConverterCollection(object):
         s = re.sub('\\\\em', '\\\\it', s)
         return s
 
+    def conv_angew(self, ):
+        """angewandte converter."""
+        s = self.bbls
+        x = re.findall('\\\\begin{mcitethebibliography}.*', s)[0]
+        s = re.sub('^.*?\\n\\n', '\\'+x+'\\n', s, flags=re.S)
+        s = re.sub('mcitethebibliography', 'thebibliography', s)
+        s = re.sub('\\\\bibitem\[.*?\]', '\\\\bibitem', s, flags=re.S)
+        s = re.sub('\\\\mciteBst.*?EndOfBibitem', '', s, flags=re.S)
+        s = re.sub('\\\\emph', '\\\\textit', s)
+        s = re.sub('\\\\relax', '.', s)
+        return s
+
 
 def getargs():
     """Parse command line argument and return the result as a dict object."""
