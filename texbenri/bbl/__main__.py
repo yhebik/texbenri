@@ -50,7 +50,7 @@ def getargs():
         )
     parser.add_argument(
         '-s', '--style',
-        help='bst file name (acsrev|aip) (default: acsrev)',
+        help='bst file name (acsrev|aip|angew) (default: acsrev)',
         dest='style',
         default='acsrev',
         )
