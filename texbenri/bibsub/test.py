@@ -2,7 +2,7 @@
 import os
 import re
 import unittest
-from texbenri.bibsub.__main__ import *
+import texbenri.bibsub.__main__ as tbm
 
 
 class Test(unittest.TestCase):
@@ -24,12 +24,16 @@ class Test(unittest.TestCase):
             os.remove(i)
 
     def testFunc_load_refdict(self, ):
-        refdict = load_refdict([self.REFFILE, ])
+        refdict = tbm.load_refdict([self.REFFILE, ])
         self.assertTrue(self.FULL in refdict.keys())
         self.assertTrue(self.AB in refdict.values())
 
     def testFunc_bibsub(self, ):
         refdict = {self.FULL: self.AB}
-        s = bibsub(self.TEXFILE, refdict, True)
+        s = tbm.bibsub(self.TEXFILE, refdict, True)
         self.assertFalse(re.search(self.FULL, s))
         self.assertTrue(re.search(self.AB, s))
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -2,7 +2,7 @@
 import os
 import re
 import unittest
-from texbenri.bundle.__main__ import *
+import texbenri.bundle.__main__ as tbm
 
 
 class Test(unittest.TestCase):
@@ -29,16 +29,16 @@ class Test(unittest.TestCase):
         shutil.rmtree(self.TEMP)
 
     def testFunc_parse_graphicspath(self, ):
-        r = parse_graphicspath(self.TARGET+'.tex')
+        r = tbm.parse_graphicspath(self.TARGET+'.tex')
         [self.assertTrue(si in r) for si in ['./', '../']]
 
     def testFunc_get_graphics_list(self, ):
-        ls = get_graphics_list(self.TARGET+'.tex')
+        ls = tbm.get_graphics_list(self.TARGET+'.tex')
         self.assertTrue(isinstance(ls, tuple))
 
     def testFunc_replace_graphics(self, ):
         fmt = 'Fig{0:d}{1}'
-        s = replace_graphics(self.TARGET+'.tex', fmt, True)
+        s = tbm.replace_graphics(self.TARGET+'.tex', fmt, True)
         self.assertFalse(re.search(self.FLIST[0], s))
         self.assertTrue(re.search(fmt.format(1, '.eps'), s))
 
@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         fmt = 'Fig{0:d}{1}'
         prefix = 'test_prefix'
         os.mkdir(prefix)
-        copy_figs(self.TARGET+'.tex', fmt, prefix)
+        tbm.copy_figs(self.TARGET+'.tex', fmt, prefix)
         self.assertTrue(fmt.format(1, '.eps') in os.listdir(prefix))
 
 
